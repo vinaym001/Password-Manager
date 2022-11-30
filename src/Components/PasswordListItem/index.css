@@ -1,0 +1,54 @@
+.li-container {
+  border-width: 1px;
+  background-color: transparent;
+  border-style: solid;
+  border-radius: 10px;
+  border-color: white;
+  padding: 20px;
+  list-style-type: none;
+  margin-right: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.initial-container {
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
+  background-color: brown;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-width: 0px;
+  margin-right: 5px;
+}
+.initial {
+  font-family: 'roboto';
+  font-size: 20px;
+  font-weight: 450;
+}
+.inputs {
+  color: white;
+  font-family: 'roboto';
+  font-weight: 450px;
+  font-size: 12px;
+  margin-right: 30px;
+}
+.del-icon {
+  width: 20px;
+  height: 23px;
+  margin-left: 20px;
+}
+.content {
+  display: flex;
+}
+.del-icon-btn {
+  background-color: transparent;
+  border-width: 0px;
+  cursor: pointer;
+}
+.stars {
+  height: 15px;
+  width: 100px;
+}

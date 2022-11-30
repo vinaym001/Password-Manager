@@ -1,0 +1,94 @@
+* {
+  margin: 0px;
+}
+.bg-container {
+  background-image: linear-gradient(to top, #c3caea, #9ba9eb);
+  min-height: 100vh;
+  padding: 30px;
+}
+.app-logo {
+  height: 50px;
+  width: 180px;
+}
+.password-input-container {
+  background-color: #5763a5;
+  margin: 30px;
+  border-radius: 10px;
+  width: 90%;
+  padding: 30px;
+  display: flex;
+}
+.form-heading {
+  margin-bottom: 20px;
+}
+.password-form-container {
+  width: 50%;
+  background-color: #454f84;
+  border-radius: 10px;
+  font-family: 'roboto';
+  padding: 30px;
+  color: White;
+  align-items: center;
+  margin-right: 30px;
+}
+.password-manager {
+  width: 50%;
+}
+.form {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+.input-bar {
+  width: 80%;
+  margin-bottom: 20px;
+  height: 35px;
+  padding: 6px;
+  font-family: 'roboto';
+  outline: none;
+}
+.submit-btn {
+  background-color: #0b69ff;
+  border-width: 0px;
+  color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  cursor: pointer;
+}
+.img-container {
+  justify-content: center;
+}
+.password-store-container {
+  background-color: #5763a5;
+  margin: 30px;
+  border-radius: 10px;
+  width: 90%;
+  padding: 30px;
+}
+.search-input {
+  height: 30px;
+  margin-bottom: 20px;
+}
+.hr-line {
+  border-width: 1px;
+  margin-bottom: 10px;
+}
+.ul-container {
+  display: flex;
+}
+.search-count-container {
+  display: flex;
+  justify-content: space-between;
+}
+.password-icon {
+  height: 30px;
+  width: 30px;
+  padding: 0px;
+  background-color: white;
+}
+.input-icon-container {
+  display: flex;
+  align-items: center;
+}
