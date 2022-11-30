@@ -103,23 +103,14 @@ class PasswordManager extends Component {
                 className="input-bar"
                 onChange={this.onNameInputChange}
               />
-              <div className="input-icon-container">
-                <div>
-                  <img
-                    src="https://assets.ccbp.in/frontend/react-js/password-manager-password-img.png"
-                    alt="password"
-                    className="password-icon"
-                  />
-                </div>
-                <div>
+            
                   <input
                     type="password"
                     placeholder="Enter Password"
                     className="input-bar"
                     onChange={this.onPasswordInputChange}
                   />
-                </div>
-              </div>
+        
 
               <div>
                 <button type="submit" className="submit-btn">
