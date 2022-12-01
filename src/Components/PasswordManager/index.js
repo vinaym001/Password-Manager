@@ -13,13 +13,31 @@ class PasswordManager extends Component {
     passwordInput: '',
     checkBoxClicked: false,
     passwordList: [],
+    searchInput: '',
+    passwordCount: 0,
   }
 
   onDelete = id => {
     const {passwordList} = this.state
-    this.setState({
+    this.setState(prevState => ({
       passwordList: passwordList.filter(password => password.id !== id),
+      passwordCount: prevState.passwordCount - 1,
+    }))
+  }
+
+  onSearchName = event => {
+    this.setState({
+      searchInput: event.target.value,
     })
+  }
+
+  getSearchResults = () => {
+    const {searchInput, passwordList} = this.state
+    const searchResults = passwordList.filter(eachApp =>
+      eachApp.nameInput.toLowerCase().includes(searchInput.toLowerCase()),
+    )
+
+    return searchResults
   }
 
   renderPasswordListItems = () => {
@@ -50,6 +68,7 @@ class PasswordManager extends Component {
       nameInput: '',
       websiteInput: '',
       passwordInput: '',
+      passwordCount: prevState.passwordCount + 1,
     }))
   }
 
@@ -78,7 +97,8 @@ class PasswordManager extends Component {
   }
 
   render() {
-    const {checkBoxClicked} = this.state
+    const {searchInput, passwordCount} = this.state
+    const searchResults = this.getSearchResults()
 
     return (
       <div className="bg-container">
@@ -103,15 +123,12 @@ class PasswordManager extends Component {
                 className="input-bar"
                 onChange={this.onNameInputChange}
               />
-            
-                  <input
-                    type="password"
-                    placeholder="Enter Password"
-                    className="input-bar"
-                    onChange={this.onPasswordInputChange}
-                  />
-        
-
+              <input
+                type="password"
+                placeholder="Enter Password"
+                className="input-bar"
+                onChange={this.onPasswordInputChange}
+              />
               <div>
                 <button type="submit" className="submit-btn">
                   Add
@@ -129,12 +146,13 @@ class PasswordManager extends Component {
         </div>
         <div className="password-store-container">
           <div className="search-count-container">
-            <p>Your Passwords</p>
+            <p>Your Passwords{passwordCount}</p>
             <input
               className="search-input"
               type="search"
               placeholder="Search-Name"
               onChange={this.onSearchName}
+              value={searchInput}
             />
           </div>
           <hr className="hr-line" />
@@ -154,3 +172,4 @@ class PasswordManager extends Component {
 }
 
 export default PasswordManager
+
