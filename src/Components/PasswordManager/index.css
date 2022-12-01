@@ -77,6 +77,8 @@
 }
 .ul-container {
   display: flex;
+  flex-wrap: wrap;
+  min-width: 100%;
 }
 .search-count-container {
   display: flex;
