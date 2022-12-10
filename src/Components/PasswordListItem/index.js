@@ -1,14 +1,8 @@
 import './index.css'
 
 const PasswordListItem = props => {
-  const {passwordDetails, onDelete} = props
-  const {
-    id,
-    nameInput,
-    websiteInput,
-    passwordInput,
-    checkBoxClicked,
-  } = passwordDetails
+  const {passwordDetails, onDelete, checkBoxClicked} = props
+  const {id, nameInput, websiteInput, passwordInput} = passwordDetails
   const initial = nameInput[0]
 
   const passwordInputTxtUrl = checkBoxClicked ? (
@@ -42,6 +36,7 @@ const PasswordListItem = props => {
           type="button"
           className="del-icon-btn"
           onClick={onClickDeleteIconBtn}
+          testid="delete"
         >
           <img
             src="https://assets.ccbp.in/frontend/react-js/password-manager-delete-img.png"
