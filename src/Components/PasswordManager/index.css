@@ -94,3 +94,34 @@
   display: flex;
   align-items: center;
 }
+.no-password-img {
+  width: 300px;
+}
+.no-password-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.no-pass-txt {
+  color: white;
+  font-weight: bold;
+  font-family: 'roboto';
+  margin-top: 20px;
+}
+.icon-img {
+  width: 30px;
+  height: 33px;
+  background-color: white;
+  margin-bottom: 20px;
+}
+.con {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.seacrh-img {
+  width: 30px;
+  background-color: white;
+  margin-bottom: 20px;
+}
