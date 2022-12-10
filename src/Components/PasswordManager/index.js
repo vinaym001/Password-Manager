@@ -41,13 +41,14 @@ class PasswordManager extends Component {
   }
 
   renderPasswordListItems = () => {
-    const {passwordList} = this.state
+    const {passwordList, checkBoxClicked} = this.state
 
     return passwordList.map(eachItem => (
       <PasswordListItem
         key={eachItem.id}
         passwordDetails={eachItem}
         onDelete={this.onDelete}
+        checkBoxClicked={checkBoxClicked}
       />
     ))
   }
@@ -61,7 +62,6 @@ class PasswordManager extends Component {
       nameInput,
       websiteInput,
       passwordInput,
-      onClickCheckbox: false,
     }
     this.setState(prevState => ({
       passwordList: [...prevState.passwordList, newPasswordList],
@@ -96,9 +96,29 @@ class PasswordManager extends Component {
     }))
   }
 
+  onNameSearch = event => {
+    const {searchInput} = this.state
+    this.setState({
+      searchInput: event.target.value,
+    })
+  }
+
+  getSearchResults = () => {
+    const {passwordList, nameInput, searchInput} = this.state
+    const searchResult = passwordList.filter(eachItem =>
+      eachItem.nameInput.toLowerCase().includes(searchInput.toLowerCase()),
+    )
+  }
+
   render() {
-    const {searchInput, passwordCount} = this.state
-    const searchResults = this.getSearchResults()
+    const {
+      passwordCount,
+      nameInput,
+      websiteInput,
+      passwordInput,
+      searchInput,
+    } = this.state
+    const searchResult = this.getSearchResults()
 
     return (
       <div className="bg-container">
@@ -111,24 +131,48 @@ class PasswordManager extends Component {
           <div className="password-form-container">
             <h1 className="form-heading">Add New Password</h1>
             <form onSubmit={this.onAddbtn} className="form">
-              <input
-                placeholder="Enter Website"
-                type="text"
-                className="input-bar"
-                onChange={this.onWebsiteInputChange}
-              />
-              <input
-                placeholder="Enter Username"
-                type="text"
-                className="input-bar"
-                onChange={this.onNameInputChange}
-              />
-              <input
-                type="password"
-                placeholder="Enter Password"
-                className="input-bar"
-                onChange={this.onPasswordInputChange}
-              />
+              <div className="con">
+                <img
+                  src="https://assets.ccbp.in/frontend/react-js/password-manager-website-img.png"
+                  alt="website"
+                  className="icon-img"
+                />
+                <input
+                  placeholder="Enter Website"
+                  type="text"
+                  className="input-bar"
+                  onChange={this.onWebsiteInputChange}
+                  value={websiteInput}
+                />
+              </div>
+              <div className="con">
+                <img
+                  src="https://assets.ccbp.in/frontend/react-js/password-manager-username-img.png"
+                  alt="username"
+                  className="icon-img"
+                />
+                <input
+                  placeholder="Enter Username"
+                  type="text"
+                  className="input-bar"
+                  onChange={this.onNameInputChange}
+                  value={nameInput}
+                />
+              </div>
+              <div className="con">
+                <img
+                  src="https://assets.ccbp.in/frontend/react-js/password-manager-password-img.png"
+                  alt="password"
+                  className="icon-img"
+                />
+                <input
+                  type="password"
+                  placeholder="Enter Password"
+                  className="input-bar"
+                  onChange={this.onPasswordInputChange}
+                  value={passwordInput}
+                />
+              </div>
               <div>
                 <button type="submit" className="submit-btn">
                   Add
@@ -146,14 +190,23 @@ class PasswordManager extends Component {
         </div>
         <div className="password-store-container">
           <div className="search-count-container">
-            <p>Your Passwords{passwordCount}</p>
-            <input
-              className="search-input"
-              type="search"
-              placeholder="Search-Name"
-              onChange={this.onSearchName}
-              value={searchInput}
-            />
+            <h1>
+              Your Passwords: <p>{passwordCount}</p>
+            </h1>
+            <div className="con">
+              <img
+                src="https://assets.ccbp.in/frontend/react-js/password-manager-search-img.png"
+                alt="search"
+                className="seacrh-img"
+              />
+              <input
+                className="search-input"
+                type="search"
+                placeholder="Search-Name"
+                onChange={this.onNameSearch}
+                value={searchInput}
+              />
+            </div>
           </div>
           <hr className="hr-line" />
           <input
@@ -161,10 +214,19 @@ class PasswordManager extends Component {
             type="checkbox"
             onChange={this.onClickCheckbox}
           />
-          <label onChange={this.onClickCheckbox} htmlFor="checkBox">
-            Show Password{' '}
-          </label>
-          <ul className="ul-container">{this.renderPasswordListItems()}</ul>
+          <label htmlFor="checkBox">Show Passwords </label>
+          {passwordCount > 0 ? (
+            <ul className="ul-container">{this.renderPasswordListItems()}</ul>
+          ) : (
+            <div className="no-password-container">
+              <img
+                src="https://assets.ccbp.in/frontend/react-js/no-passwords-img.png"
+                alt="no passwords"
+                className="no-password-img"
+              />
+              <p className="no-pass-txt">No Passwords</p>
+            </div>
+          )}
         </div>
       </div>
     )
@@ -172,4 +234,3 @@ class PasswordManager extends Component {
 }
 
 export default PasswordManager
-
